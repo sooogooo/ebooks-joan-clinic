@@ -1,0 +1,32 @@
+{
+  "name": "tianrenheyi-medical-aesthetics",
+  "version": "1.0.0",
+  "description": "天人合一与医美 - 现代化静态网站",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.18",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.0",
+    "framer-motion": "^10.16.0",
+    "lucide-react": "^0.294.0",
+    "mermaid": "^10.6.0",
+    "next": "^14.0.0",
+    "postcss": "^8.4.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0"
+  }
+}
