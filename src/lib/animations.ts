@@ -6,12 +6,12 @@ interface UseScrollAnimationOptions {
   rootMargin?: string;
 }
 
-export function useScrollAnimation(
+export function useScrollAnimation<T extends HTMLElement>(
   options: UseScrollAnimationOptions = {}
 ) {
   const { threshold = 0.1, root = null, rootMargin = '0px' } = options;
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -138,18 +138,28 @@ export function useParallax(speed: number = 0.5) {
 }
 
 // 元素可见性检测 Hook
-export function useInView(options?: IntersectionObserverInit) {
+export function useInView<T extends HTMLElement>(options?: IntersectionObserverInit & { triggerOnce?: boolean }) {
+  const { triggerOnce, ...observerOptions } = options || {};
   const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (triggerOnce && ref.current) {
+            observer.unobserve(ref.current);
+          }
+        } else {
+          if (!triggerOnce) {
+            setInView(false);
+          }
+        }
       },
       {
         threshold: 0.1,
-        ...options,
+        ...observerOptions,
       }
     );
 
@@ -162,7 +172,7 @@ export function useInView(options?: IntersectionObserverInit) {
         observer.unobserve(ref.current);
       }
     };
-  }, [options]);
+  }, [triggerOnce, observerOptions]);
 
   return { ref, inView };
 }

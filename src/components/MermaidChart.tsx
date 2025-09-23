@@ -41,9 +41,8 @@ export default function MermaidChart({ id, code, className = '' }: MermaidChartP
         useMaxWidth: true,
         padding: 20
       },
-      gitgraph: {
-        useMaxWidth: true,
-        padding: 20
+      gitGraph: {
+        useMaxWidth: true
       },
       timeline: {
         useMaxWidth: true,

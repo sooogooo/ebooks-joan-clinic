@@ -22,7 +22,7 @@ export function AnimatedElement({
   once = true,
   ...motionProps
 }: AnimatedElementProps) {
-  const { ref, inView } = useInView({
+  const { ref, inView } = useInView<HTMLDivElement>({
     threshold: 0.1,
     triggerOnce: once,
   });
@@ -94,7 +94,7 @@ export function StaggeredList({
   staggerDelay = 0.1,
   animation = 'slideUp',
 }: StaggeredListProps) {
-  const { ref, inView } = useInView({
+  const { ref, inView } = useInView<HTMLDivElement>({
     threshold: 0.1,
     triggerOnce: true,
   });
@@ -164,7 +164,7 @@ export function ParallaxElement({
   speed = 0.5,
   direction = 'up',
 }: ParallaxElementProps) {
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
     <motion.div
@@ -198,7 +198,7 @@ export function TypewriterText({
   delay = 0,
   showCursor = true,
 }: TypewriterTextProps) {
-  const { ref, inView } = useInView({
+  const { ref, inView } = useInView<HTMLDivElement>({
     threshold: 0.5,
     triggerOnce: true,
   });

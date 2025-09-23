@@ -20,7 +20,7 @@ export function LazyLoad({
   rootMargin = '100px',
   once = true,
 }: LazyLoadProps) {
-  const { ref, inView } = useInView({
+  const { ref, inView } = useInView<HTMLDivElement>({
     threshold,
     rootMargin,
     triggerOnce: once,
@@ -57,7 +57,7 @@ export function LazyImage({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [currentSrc, setCurrentSrc] = useState(placeholder);
-  const { ref, inView } = useInView({
+  const { ref, inView } = useInView<HTMLDivElement>({
     threshold: 0.1,
     rootMargin: '50px',
     triggerOnce: true,
